@@ -1,6 +1,6 @@
 # Image Smoothing and Sharpening Using OpenCV
 
-## Aim
+## Aim:
 
 To write a Python program using OpenCV to apply different smoothing filters (Averaging, Weighted Averaging, Gaussian, Median) and sharpening filters (Laplacian Kernel and Laplacian Operator) for image enhancement, and display each result separately along with the original image for comparison.
 
@@ -19,7 +19,7 @@ To write a Python program using OpenCV to apply different smoothing filters (Ave
 
 ---
 
-##  Software Used
+##  Software Used:
 
 - Anaconda – Python 3.7  
 - Jupyter Notebook / VS Code  
@@ -29,7 +29,7 @@ To write a Python program using OpenCV to apply different smoothing filters (Ave
 
 ---
 
-##  Algorithm
+##  Algorithm:
 
 ### Step 1:
 Import the required libraries: OpenCV, NumPy, and Matplotlib.
@@ -63,28 +63,101 @@ Display all filtered images using a grid layout for comparison.
 
 ---
 
-##  Developed By
+##  Developed By:
 
-- **Name:** ____________________________  
-- **Register No:** ______________________  
-
----
-
-##  Output
-
-### Smoothing Filters
-
-- Averaging filter produces blurred image  
-- Weighted averaging provides smoother result with less distortion  
-- Gaussian filter preserves edges better while reducing noise  
-- Median filter removes salt-and-pepper noise effectively  
-
-###  Sharpening Filters
-
-- Laplacian kernel enhances edges and fine details  
-- Laplacian operator detects edges clearly in grayscale  
+- **Name:** Rakisha R
+- **Register No:** 212225230223
 
 ---
+
+## Program:
+
+
+
+### 1. Smoothing Filters
+
+#### i) Using Averaging Filter
+```python
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+image1=cv2.imread("taj.jpeg")
+image2=cv2.cvtColor(image1,cv2.COLOR_BGR2RGB)
+kernel=np.ones((11,11),np.float32)/169
+image3=cv2.filter2D(image2,-1,kernel)
+plt.figure(figsize=(9,9))
+plt.subplot(1,2,1)
+plt.imshow(image2)
+plt.title("Original Image")
+plt.axis("off")
+plt.subplot(1,2,2)
+plt.imshow(image3)
+plt.title("Average Filter Image")
+plt.axis("off")
+plt.show()
+```
+## Output
+<Figure size 900x900 with 2 Axes><img width="717" height="488" alt="image" src="https://github.com/user-attachments/assets/49e4881e-5c2d-46ae-8617-2521fb2fbbb6" />
+
+#### ii) Using Weighted Averaging Filter
+```python
+kernel1=np.array([[1,2,1],[2,4,2],[1,2,1]])/16
+image3=cv2.filter2D(image2,-1,kernel1)
+plt.imshow(image3)
+plt.title("Weighted Average Filter Image")
+plt.axis("off")
+plt.show()
+```
+## Output
+<Figure size 640x480 with 1 Axes><img width="282" height="410" alt="image" src="https://github.com/user-attachments/assets/e3ba2440-c52c-4989-a2ed-414c97096f23" />
+
+#### iii) Using Gaussian Filter
+```python
+gaussian_blur=cv2.GaussianBlur(image2,(33,33),0,0)
+plt.imshow(gaussian_blur)
+plt.title("Gaussian Blur")
+plt.axis("off")
+plt.show()
+```
+## Output
+<Figure size 640x480 with 1 Axes><img width="282" height="410" alt="image" src="https://github.com/user-attachments/assets/e01c20ca-6d7f-4d88-851b-a52af27e8488" />
+
+
+#### iv)Using Median Filter
+```python
+median=cv2.medianBlur(image2,13)
+plt.title("Median Blur")
+plt.axis("off")
+plt.show()
+```
+## Output
+<Figure size 600x600 with 1 Axes><img width="347" height="503" alt="image" src="https://github.com/user-attachments/assets/a7b286b5-de44-4e17-a34c-52a57138e959" />
+
+### 2. Sharpening Filters
+
+#### i) Using Laplacian Linear Kernal
+```python
+kernel2=np.array([[-1,-1,-1],[2,-2,1],[2,1,-1]])
+image3=cv2.filter2D(image2,-1,kernel2)
+plt.imshow(image3)
+plt.title("Laplacian Kernel")
+plt.axis("off")
+plt.show()
+```
+## Output
+<Figure size 640x480 with 1 Axes><img width="282" height="410" alt="image" src="https://github.com/user-attachments/assets/f081a878-34d8-461f-9426-41703c37894b" />
+
+
+#### ii) Using Laplacian Operator
+```python
+laplacian=cv2.Laplacian(image2,cv2.CV_64F)
+plt.imshow(laplacian)
+plt.title("Laplacian Operator")
+plt.axis("off")
+plt.show()
+```
+## Output
+<Figure size 640x480 with 1 Axes><img width="282" height="410" alt="image" src="https://github.com/user-attachments/assets/53115dc2-5894-45d5-96e9-70a1ee94e504" />
 
 ##  Result
 
